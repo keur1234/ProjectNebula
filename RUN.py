@@ -20,6 +20,12 @@ def main():
     icon = load_sprite('icon.png')
     pg.display.set_icon(icon)
 
+    # ! ADD MENU HERE
+
+
+
+    # ? AFTER DONE WITH MENU
+    # ? IT WILL GO STRAIGHT INTO THE GAME
     control = _CONTROL()
     control.run_loop()
 
