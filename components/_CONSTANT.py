@@ -4,7 +4,7 @@ import pygame as pg
 GAMECAPTIONS = "Gensokyo"
 WIDTH = 640;    HEIGHT = 480
 RESOLUTION = (WIDTH, HEIGHT)
-FULLSCREEN = False;      FPS = 60
+FULLSCREEN = False;      FPS = 144
 CLOCK = pg.time.Clock()
 
 # * SET to fullscreen or not
@@ -22,7 +22,7 @@ BLACK = (0,0,0);      GRAY = (127,127,127);     WHITE = (255,255,255)
 RED = (255,0,0);      GREEN = (0,255,0);        BLUE = (0,0,255)
 
 # * GAME VARIABLE
-all_sprites = pg.sprite.Group();    backgrounds = pg.sprite.Group()
+all_sprites = pg.sprite.Group();    backgrounds = pg.sprite.Group();     overlays = pg.sprite.Group();
 players = pg.sprite.Group();        shots = pg.sprite.Group()      
 enemies = pg.sprite.Group();        bullets = pg.sprite.Group()
-
+LEFT = 31;   RIGHT = 417;   TOP = 16;    DOWN = 461

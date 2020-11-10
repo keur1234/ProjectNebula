@@ -9,7 +9,14 @@ from components.LOADSPRITE import MAP
 # ! [CONTROL] Main Pipeline that control every single task
 # !           in entire program.
 class _CONTROL:
-    # def __init__(self):
+    def __init__(self):
+        
+        self.screen = THISSCREEN
+        self.isFullscreen = FULLSCREEN
+        self.RUNNING = True
+        self.create_players()
+        _BACKGROUND(32, 16, "BLOOD_MOON")
+        _OVERLAY(0 , 0)
 
     def create_players(self):
 
@@ -21,17 +28,7 @@ class _CONTROL:
 
 
     def run_loop(self):
-        
-        self.create_players()
-
-        screen = THISSCREEN
-        isFullscreen = FULLSCREEN
-        RUNNING = True
-
-        backgrounds.add( _BACKGROUND(32, 16, "GREEN_PALACE") )
-        backgrounds.add( _OVERLAY(0 , 0) )
-
-        while RUNNING:
+        while self.RUNNING:
             # * Set Window's Frame per second
             CLOCK.tick(FPS)
             
@@ -39,27 +36,25 @@ class _CONTROL:
             for event in pg.event.get():
                 # * QUIT GAME
                 if event.type == pg.QUIT:
-                    RUNNING = False
+                    self.RUNNING = False
 
             # TODO : Collide checker [Hit or not]
-
-            hits = pg.sprite.groupcollide(enemies, shots, True, True)
-            hits = pg.sprite.groupcollide(players, enemies, True, True, pg.sprite.collide_circle)
-            hits = pg.sprite.groupcollide(players, bullets, True, True, pg.sprite.collide_circle)
-
-            # TODO : Drawing every object
-            screen.fill(BLACK)
-
-            # * Draw Background
-            backgrounds.update();       
-            backgrounds.draw(screen)
+            # hits = pg.sprite.groupcollide(enemies, shots, True, True)
+            # hits = pg.sprite.groupcollide(players, enemies, True, True, pg.sprite.collide_circle)
+            # hits = pg.sprite.groupcollide(players, bullets, True, True, pg.sprite.collide_circle)
+            
+            self.screen.fill(BLACK)
+            # * Draw Background / Overlay
+            # backgrounds.update(); // Our background don't have to update(No animation)       
+            # Well, Have it now.
+            backgrounds.update(self.screen);       # backgrounds.draw(self.screen)
+            overlays.draw(self.screen)
 
             # * Draw Every sprite
-            all_sprites.update();        all_sprites.draw(screen);
+            all_sprites.update();       all_sprites.draw(self.screen);
 
             # * Draw Enemy
             # spawn.update()
-
             pg.display.flip()
 
 

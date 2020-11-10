@@ -1,4 +1,5 @@
 import pygame as pg
+from components._CONSTANT import *
 from components.LOADSPRITE import MAP
 
 class _BACKGROUND(pg.sprite.Sprite):
@@ -7,13 +8,15 @@ class _BACKGROUND(pg.sprite.Sprite):
         # * Init Sprite
         pg.sprite.Sprite.__init__(self)
 
-        # ? These commented below used to make a animated background
-        # self.list = background_list
-        # self.image = self.list[0]
-        # self.frame = 0
-        # self.frame_rate = 30 * delay
-        # self.last_update = pg.time.get_ticks()
-
         # * SET image
         self.image = MAP[NAME_MAP]
         self.rect = self.image.get_rect(topleft = (x , y))
+        self.xPos = x;      self.yPos = 0
+        self.mapSpeed = 0.2
+
+        # backgrounds.add( _BACKGROUND(32, 16, "GREEN_PALACE") )
+        backgrounds.add( self )
+
+    def update(self, screen):
+        self.yPos -= self.mapSpeed
+        screen.blit(self.image , (self.xPos , self.yPos))
