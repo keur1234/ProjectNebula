@@ -1,7 +1,7 @@
 
 import pygame as pg
 from components._CONSTANT import *
-from components.LOADSPRITE import *
+from components.LOADSPRITE import spr_bluebox
 from .SHOT import _SHOT
 
 # TODO : Player class

@@ -22,7 +22,9 @@ BLACK = (0,0,0);      GRAY = (127,127,127);     WHITE = (255,255,255)
 RED = (255,0,0);      GREEN = (0,255,0);        BLUE = (0,0,255)
 
 # * GAME VARIABLE
-all_sprites = pg.sprite.Group();    backgrounds = pg.sprite.Group();     overlays = pg.sprite.Group();
+all_sprites = pg.sprite.Group();    backgrounds = pg.sprite.Group();     
+overlays = pg.sprite.Group();       texts = pg.sprite.Group()
+scores = pg.sprite.Group()
 players = pg.sprite.Group();        shots = pg.sprite.Group()      
 enemies = pg.sprite.Group();        bullets = pg.sprite.Group()
 LEFT = 31;   RIGHT = 417;   TOP = 16;    DOWN = 461

@@ -4,6 +4,8 @@ from .PLAYER import _PLAYER
 from .BACKGROUD import _BACKGROUND
 from .OVERLAY import _OVERLAY
 from .ENEMY import _ENEMY
+from .TEXT import _TEXT
+from .SCORE import _SCORE
 from components._CONSTANT import *
 from components.LOADSPRITE import MAP
 
@@ -12,6 +14,7 @@ from components.LOADSPRITE import MAP
 class _CONTROL:
     def __init__(self):
         
+        self.score = 5
         self.screen = THISSCREEN
         self.isFullscreen = FULLSCREEN
         self.RUNNING = True
@@ -19,8 +22,11 @@ class _CONTROL:
         _BACKGROUND(32, 16, "BLOOD_MOON")
         _OVERLAY(0 , 0)
         _ENEMY(200 , 50 , 0 , 0)
+        texts.add(_TEXT(435 , 67, 'Score'))
+        scores.add(_SCORE(500 , 67, str(self.score)))
 
     def create_players(self):
+        self.score = 10
 
         # * CREATE Player's Sprite
         self.player_1 = _PLAYER()
@@ -35,6 +41,9 @@ class _CONTROL:
             CLOCK.tick(FPS)
             
             # * INPUT listener [Not really input listener]
+            keypressed = pg.key.get_pressed()
+            if keypressed[pg.K_g]: self.score += 1
+
             for event in pg.event.get():
                 # * QUIT GAME
                 if event.type == pg.QUIT:
@@ -49,8 +58,8 @@ class _CONTROL:
             # * Draw Background / Overlay
             # backgrounds.update(); // Our background don't have to update(No animation)       
             # Well, Have it now.
-            backgrounds.update(self.screen);       # backgrounds.draw(self.screen)
-            overlays.draw(self.screen)
+            backgrounds.update(self.screen);        overlays.draw(self.screen)
+            texts.update(self.screen);              scores.update(self.screen , str(self.score))
 
             # * Draw Every sprite
             all_sprites.update();       all_sprites.draw(self.screen);
