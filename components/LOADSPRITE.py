@@ -36,7 +36,9 @@ spr_shot = load_sprite('spr_shot.png').convert();       spr_shot.set_colorkey(WH
 
 # * LOAD Enemy's sprite [ENEMY]
 # ? Size = 38 * 34
-spr_enemy = load_sprite('spr_enemy.png').convert_alpha()
+spr_enemy1 = load_sprite('spr_enemy.png').convert_alpha()
+spr_enemy2 = load_sprite('spr_enemy.png').convert_alpha()
+spr_enemy = [ spr_enemy1 , spr_enemy2 ]
 
 # * LOAD Bullet's sprite [ENEMY]
 # ? Size = 9 * 9

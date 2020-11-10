@@ -3,6 +3,7 @@ import pygame as pg
 from .PLAYER import _PLAYER
 from .BACKGROUD import _BACKGROUND
 from .OVERLAY import _OVERLAY
+from .ENEMY import _ENEMY
 from components._CONSTANT import *
 from components.LOADSPRITE import MAP
 
@@ -17,6 +18,7 @@ class _CONTROL:
         self.create_players()
         _BACKGROUND(32, 16, "BLOOD_MOON")
         _OVERLAY(0 , 0)
+        _ENEMY(200 , 50 , 0 , 0)
 
     def create_players(self):
 
@@ -39,9 +41,9 @@ class _CONTROL:
                     self.RUNNING = False
 
             # TODO : Collide checker [Hit or not]
-            # hits = pg.sprite.groupcollide(enemies, shots, True, True)
-            # hits = pg.sprite.groupcollide(players, enemies, True, True, pg.sprite.collide_circle)
-            # hits = pg.sprite.groupcollide(players, bullets, True, True, pg.sprite.collide_circle)
+            hits = pg.sprite.groupcollide(enemies, shots, True, True)
+            hits = pg.sprite.groupcollide(players, enemies, True, True, pg.sprite.collide_circle)
+            hits = pg.sprite.groupcollide(players, bullets, True, True, pg.sprite.collide_circle)
             
             self.screen.fill(BLACK)
             # * Draw Background / Overlay
@@ -54,7 +56,9 @@ class _CONTROL:
             all_sprites.update();       all_sprites.draw(self.screen);
 
             # * Draw Enemy
-            # spawn.update()
+            enemies.update();       enemies.draw(self.screen)
+
+
             pg.display.flip()
 
 

@@ -16,7 +16,7 @@ class _PLAYER(pg.sprite.Sprite):
         self.hp = 5;            self.speed = 2
         self.left_limit = LEFT;   self.right_limit = RIGHT;     self.top_limit = TOP;    self.bottom_limit = DOWN
         self.shot_delay = 90;   self.last_shot = pg.time.get_ticks()
-        self.radius = 10
+        self.radius = 7
         self.frame = 0;     self.frame_rate = 90
         self.last_time = pg.time.get_ticks()
 
@@ -30,7 +30,7 @@ class _PLAYER(pg.sprite.Sprite):
         self.key_up = pg.K_UP;          self.key_down = pg.K_DOWN
         self.key_shoot = pg.K_z;        # self.key_charge = pg.K_x
 
-        # * ADD Player's Sprite to players_sprite_list
+        # * ADD Player's Sprite to 'Player Sprite List'
         players.add(self)
 
 
