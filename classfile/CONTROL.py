@@ -9,8 +9,7 @@ from components.LOADSPRITE import MAP
 # ! [CONTROL] Main Pipeline that control every single task
 # !           in entire program.
 class _CONTROL:
-    def __init__(self):
-        self.screen = 0
+    # def __init__(self):
 
     def create_players(self):
 
@@ -35,32 +34,12 @@ class _CONTROL:
         while RUNNING:
             # * Set Window's Frame per second
             CLOCK.tick(FPS)
-            # TODO : Main input listener
+            
+            # * INPUT listener [Not really input listener]
             for event in pg.event.get():
-                
                 # * QUIT GAME
                 if event.type == pg.QUIT:
                     RUNNING = False
-                
-                # * Player hit some key
-                elif event.type == pg.KEYDOWN: # * Player hit some 'key'
-                    mod_bitmask = pg.key.get_mods()
-                    # ? If player hit 'ALT + ENTER' -> [FULLSCREEN]
-                    # ? or hit 'ALT + F4' -> [QUIT GAME]
-                    if mod_bitmask & pg.KMOD_ALT: # * Player hit 'ALT'
-                        if event.key == pg.K_RETURN:
-                            if isFullscreen: # * Set to 'Windows'
-                                screen = pg.display.set_mode(RESOLUTION) 
-                                isFullscreen = False
-                            else: # * Set to 'Fullscreen'
-                                screen = pg.display.set_mode(RESOLUTION, pg.FULLSCREEN)
-                                isFullscreen = True
-                        elif event.key == pg.K_F4: # * QUIT GAME
-                            RUNNING = False
-
-            
-                # players.update()
-
 
             # TODO : Collide checker [Hit or not]
 
