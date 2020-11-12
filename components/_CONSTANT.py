@@ -27,4 +27,5 @@ overlays = pg.sprite.Group();       texts = pg.sprite.Group()
 scores = pg.sprite.Group()
 players = pg.sprite.Group();        shots = pg.sprite.Group()      
 enemies = pg.sprite.Group();        bullets = pg.sprite.Group()
+homing_shots = pg.sprite.Group()
 LEFT = 31;   RIGHT = 417;   TOP = 16;    DOWN = 461

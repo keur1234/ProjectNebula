@@ -59,10 +59,6 @@ class _PLAYER(pg.sprite.Sprite):
         # ? SHOOT'EM
         if keypressed[self.key_shoot]: self.shoot()
 
-        
-
-
-
     def shoot(self):
         now = pg.time.get_ticks()
 
@@ -71,8 +67,13 @@ class _PLAYER(pg.sprite.Sprite):
             self.last_shot = now
 
             # * CREATE Shot's sprite
-            shot1 = _SHOT(self.rect.centerx - 9, self.rect.centery - 41);       shot2 = _SHOT(self.rect.centerx + 9, self.rect.centery - 41)
+            shot1 = _SHOT(self.rect.centerx - 9, self.rect.centery - 41)
+            shot2 = _SHOT(self.rect.centerx + 9, self.rect.centery - 41)
             shots.add(shot1 , shot2)
-
+            
             # * ADD Shot's Sprite to all_sprites
             all_sprites.add(shot1, shot2)
+
+
+    def myPos(self):
+        return self.rect.centerx , self.rect.centery

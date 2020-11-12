@@ -2,6 +2,7 @@ import pygame as pg
 from .BULLET import _BULLET
 from components._CONSTANT import *
 from components.LOADSPRITE import *
+from .HOMING_SHOT import _HOMING_SHOT
 
 class _ENEMY(pg.sprite.Sprite):
     def __init__(self, x ,y, SpdX , SpdY):
@@ -13,7 +14,7 @@ class _ENEMY(pg.sprite.Sprite):
         self.speed = 1
         self.speedX = SpdX;        self.speedY = SpdY  
         self.left_limit = LEFT;   self.right_limit = RIGHT;     self.top_limit = TOP;    self.bottom_limit = DOWN
-        self.shot_delay = 50;  self.last_shot = pg.time.get_ticks()
+        self.shot_delay = 80;  self.last_shot = pg.time.get_ticks()
         self.radius = 17
         self.frame = 0;     self.frame_rate = 90
         self.last_update = pg.time.get_ticks()
@@ -71,12 +72,20 @@ class _ENEMY(pg.sprite.Sprite):
             #bullets.add(bullet1)
 
             #all_sprites.add(bullet1)
-            for i in range(12):
+            '''
+            for i in range(3):
+                bullet1 = _BULLET(self.rect.centerx , self.rect.centery, (i * 15) + self.pattern, 1)
+                bullets.add(bullet1)
+                all_sprites.add(bullet1)
+            for i in range(12,15):
                 bullet1 = _BULLET(self.rect.centerx , self.rect.centery, (i * 15) + self.pattern, 1)
                 bullets.add(bullet1)
                 all_sprites.add(bullet1)
 
             self.pattern += 15
+            '''
+            homing = _HOMING_SHOT(self.rect.centerx , self.rect.centery)
+            homing_shots.add(homing)
     '''
     def death(self):
         self.remove(all_sprites)

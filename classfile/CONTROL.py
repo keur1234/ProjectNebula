@@ -53,6 +53,7 @@ class _CONTROL:
             hits = pg.sprite.groupcollide(enemies, shots, True, True)
             hits = pg.sprite.groupcollide(players, enemies, True, True, pg.sprite.collide_circle)
             hits = pg.sprite.groupcollide(players, bullets, True, True, pg.sprite.collide_circle)
+            hits = pg.sprite.groupcollide(players, homing_shots, True, True, pg.sprite.collide_circle)
             
             self.screen.fill(BLACK)
             # * Draw Background / Overlay
@@ -62,6 +63,7 @@ class _CONTROL:
             texts.update(self.screen);              scores.update(self.screen , str(self.score))
 
             # * Draw Every sprite
+            homing_shots.update(self.player_1);      homing_shots.draw(self.screen)
             all_sprites.update();       all_sprites.draw(self.screen);
 
             # * Draw Enemy

@@ -22,9 +22,9 @@ MAP = {"GREEN_PALACE":green_palace , "BLOOD_MOON":blood_moon}
 
 # * LOAD Player's sprite [PLAYER]
 # ? Size = 16 * 41
-spr_bluebox_idle = load_sprite('spr_bluebox.png').convert_alpha()
-spr_bluebox_left = load_sprite('spr_bluebox_left.png').convert_alpha()
-spr_bluebox_right = load_sprite('spr_bluebox_right.png').convert_alpha()
+spr_bluebox_idle = load_sprite('spr_bluebox.png').convert();        spr_bluebox_idle.set_colorkey(WHITE)
+spr_bluebox_left = load_sprite('spr_bluebox_left.png').convert();       spr_bluebox_left.set_colorkey(WHITE)
+spr_bluebox_right = load_sprite('spr_bluebox_right.png').convert();       spr_bluebox_right.set_colorkey(WHITE)
 spr_bluebox = [ spr_bluebox_idle , spr_bluebox_left , spr_bluebox_right]
 
 # sheet_shots=load_sprite('spr_shot.png').convert_alpha()
@@ -36,10 +36,10 @@ spr_shot = load_sprite('spr_shot.png').convert();       spr_shot.set_colorkey(WH
 
 # * LOAD Enemy's sprite [ENEMY]
 # ? Size = 38 * 34
-spr_enemy1 = load_sprite('spr_enemy.png').convert_alpha()
-spr_enemy2 = load_sprite('spr_enemy.png').convert_alpha()
+spr_enemy1 = load_sprite('spr_enemy.png').convert();        spr_enemy1.set_colorkey(GREEN)
+spr_enemy2 = load_sprite('spr_enemy.png').convert();        spr_enemy2.set_colorkey(GREEN)
 spr_enemy = [ spr_enemy1 , spr_enemy2 ]
 
 # * LOAD Bullet's sprite [ENEMY]
 # ? Size = 9 * 9
-spr_bullet = load_sprite('spr_bullet.png').convert()
+spr_bullet = load_sprite('spr_bullet.png').convert();       spr_bullet.set_colorkey(WHITE)
