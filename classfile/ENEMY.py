@@ -2,7 +2,7 @@ import pygame as pg
 from .BULLET import _BULLET
 from components._CONSTANT import *
 from components.LOADSPRITE import *
-from .HOMING_SHOT import _HOMING_SHOT
+# from .HOMING_SHOT import _HOMING_SHOT
 
 class _ENEMY(pg.sprite.Sprite):
     def __init__(self, x ,y, SpdX , SpdY):
@@ -31,7 +31,7 @@ class _ENEMY(pg.sprite.Sprite):
         self.key_shoot = pg.K_f;    # self.key_charge = pg.K_x
         
         # * ADD Enemy's Sprite to 'Enemy Sprite List'
-        enemies.add(self)
+        enemies.add(self);      all_sprites.add(self)
 
     def update(self):
         '''now = pg.time.get_ticks()
@@ -84,8 +84,9 @@ class _ENEMY(pg.sprite.Sprite):
 
             self.pattern += 15
             
-            #homing = _HOMING_SHOT(self.rect.centerx , self.rect.centery)
-            #homing_shots.add(homing)
+            # homing = _HOMING_SHOT(self.rect.centerx , self.rect.centery)
+            # homing_shots.add(homing)
+            # all_sprites.add(homing)
     '''
     def death(self):
         self.remove(all_sprites)

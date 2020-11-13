@@ -4,7 +4,6 @@ from components.LOADSPRITE import *
 
 class _SHOT(pg.sprite.Sprite):
     def __init__(self, x, y):
-
         # * Init Sprite
         pg.sprite.Sprite.__init__(self)
         
@@ -21,5 +20,5 @@ class _SHOT(pg.sprite.Sprite):
         self.rect.center = ( self.posX , int(self.posY) )
 
         # * IF it out of the screen, delete it.
-        if self.rect.bottom < TOP:
+        if self.rect.bottom < TOP: 
             self.kill()
