@@ -72,7 +72,7 @@ class _ENEMY(pg.sprite.Sprite):
             #bullets.add(bullet1)
 
             #all_sprites.add(bullet1)
-            '''
+            
             for i in range(3):
                 bullet1 = _BULLET(self.rect.centerx , self.rect.centery, (i * 15) + self.pattern, 1)
                 bullets.add(bullet1)
@@ -83,9 +83,9 @@ class _ENEMY(pg.sprite.Sprite):
                 all_sprites.add(bullet1)
 
             self.pattern += 15
-            '''
-            homing = _HOMING_SHOT(self.rect.centerx , self.rect.centery)
-            homing_shots.add(homing)
+            
+            #homing = _HOMING_SHOT(self.rect.centerx , self.rect.centery)
+            #homing_shots.add(homing)
     '''
     def death(self):
         self.remove(all_sprites)
