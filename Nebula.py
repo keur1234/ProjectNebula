@@ -148,12 +148,10 @@ def main():
                     self.skillcursor = _CursorSkillSel(38, 226)
 
         def start(self):
-            self.charselcursor.kill();  self.skillcursor.kill()
+            #self.charselcursor.kill();  self.skillcursor.kill()
             backgrounds.empty();    all_sprites.empty()
             control.create_players()
             backgrounds.add( _Background(blood_moon , 32 , 16) )
-            overlays.add( _Overlay(0 , 0) )
-
             # self.testspawn=TestSpawn()
 
     class _CursorCharSel(pg.sprite.Sprite):
@@ -208,11 +206,12 @@ def main():
                 self.update_timer = now
 
                 keystate = pg.key.get_pressed()
-                if keystate[KEY_UP]:        self.options -= 1;
-                elif keystate[KEY_DOWN]:    self.options += 1;
+                if keystate[KEY_UP]:        self.options -= 1
+                elif keystate[KEY_DOWN]:    self.options += 1
                 elif keystate[KEY_SHOOT] or keystate[KEY_ENTER]:
                     control.screen = 2
                     selection.start()
+                    self.kill()
 
     class _Player(pg.sprite.Sprite):
         def __init__(self):
@@ -291,6 +290,16 @@ def main():
             # * IF it out of the screen, delete it.
             if self.rect.bottom < TOP:  self.kill()
 
+    class _StartSpawn(pygame.sprite.Sprite):
+        def __init__(self):
+            pg.sprite.Sprite.__init__(self)
+            self.image = pg.Surface( (32 , 16) )
+            self.rect = self.image.get_rect()
+
+
+
+
+
     class _Background(pg.sprite.Sprite):
         def __init__(self, name_map, x, y):
             pg.sprite.Sprite.__init__(self)
@@ -343,31 +352,29 @@ def main():
                 elif control.screen == 1:   # ? SELECT CHARACTER
                     if not selection.charselcursor.hasChosen:    
                         if event.key == KEY_LEFT:   selection.charselcursor.options -= 1
-                        if event.key == KEY_RIGHT:	    selection.charselcursor.options += 1
-                        if event.key == KEY_SHOOT:	    selection.charselcursor.choose()
+                        if event.key == KEY_RIGHT:  selection.charselcursor.options += 1
+                        if event.key == KEY_SHOOT:  selection.charselcursor.choose()
                     else:
                         if event.key == KEY_CHARGE:	selection.charselcursor.unchoose()
-
-                    if event.key == pg.K_ESCAPE:
+                    if event.key == KEY_CHARGE or event.key == KEY_ESCAPE:
                         control.screen = 0
                         menuarrow = _MenuArrow();    all_sprites.add(menuarrow)
                         backgrounds.empty()
-                        selection.charselcursor.kill();     selection.skillcursor.kill()
+                        if selection.chooseSkill:
+                            selection.skillcursor.kill()
+                        selection.charselcursor.kill()
                         selection.ready = False; selection.chooseSkill = False
         
         # drawing functions
         screen.fill(BLACK)
         backgrounds.update();   
-        overlays.draw(screen)
         if control.screen == 0:
-            # Draw background
             screen.blit(gui_main, gui_main_rect)
         elif control.screen == 1:
             selection.update()
             screen.blit(gui_char_sel, gui_char_sel_rect)
-            #screen.blit(gui_select, gui_select_rect)
-        #elif control.screen == 2:
-        #    print("Hello WOrld")
+        elif control.screen == 2:
+            screen.blit(spr_overlay, (0 , 0))
         all_sprites.update();   all_sprites.draw(screen)
         pg.display.flip()
 
