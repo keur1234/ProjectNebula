@@ -352,7 +352,7 @@ def main():
                         control.screen = 0
                         menuarrow = _MenuArrow();    all_sprites.add(menuarrow)
                         backgrounds.empty()
-                        selection.charselcursor.kill()
+                        selection.charselcursor.kill();     selection.skillcursor.kill()
                         selection.ready = False; selection.chooseSkill = False
         
         # drawing functions
