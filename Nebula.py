@@ -290,7 +290,7 @@ def main():
             # * IF it out of the screen, delete it.
             if self.rect.bottom < TOP:  self.kill()
 
-    class _StartSpawn(pygame.sprite.Sprite):
+    class _StartSpawn(pg.sprite.Sprite):
         def __init__(self):
             pg.sprite.Sprite.__init__(self)
             self.image = pg.Surface( (32 , 16) )
