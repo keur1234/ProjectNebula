@@ -305,12 +305,15 @@ def main():
             pg.sprite.Sprite.__init__(self)
             self.image = name_map
             self.rect = self.image.get_rect(topleft = (x , y))
-            self.xPos = x;      self.yPos = 0
-            self.mapSpeed = 0.2
+            self.xPos = x;      self.yPos = -890
+            self.mapSpeed = 0.225
     
         def update(self):
-            self.yPos -= self.mapSpeed
+            self.yPos += self.mapSpeed
             screen.blit(self.image , (self.xPos , self.yPos))
+            if self.yPos >= 0:
+                self.yPos = -890
+
     
     class _Overlay(pg.sprite.Sprite):
         def __init__(self, x , y):
